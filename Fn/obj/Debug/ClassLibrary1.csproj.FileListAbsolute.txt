@@ -1,0 +1,5 @@
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

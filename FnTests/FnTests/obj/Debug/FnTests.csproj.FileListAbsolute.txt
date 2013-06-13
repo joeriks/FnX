@@ -1,0 +1,7 @@
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\FnTests\FnTests\bin\Debug\FnTests.dll
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\FnTests\FnTests\bin\Debug\FnTests.pdb
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\FnTests\FnTests\obj\Debug\FnTests.csprojResolveAssemblyReference.cache
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\FnTests\FnTests\obj\Debug\FnTests.dll
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\FnTests\FnTests\obj\Debug\FnTests.pdb
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\FnTests\FnTests\bin\Debug\ClassLibrary1.dll
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\FnTests\FnTests\bin\Debug\ClassLibrary1.pdb

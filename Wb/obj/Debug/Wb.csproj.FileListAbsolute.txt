@@ -1,0 +1,5 @@
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\Wb\bin\Wb.dll
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\Wb\bin\Wb.pdb
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\Wb\obj\Debug\Wb.csprojResolveAssemblyReference.cache
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\Wb\obj\Debug\Wb.dll
+C:\Users\jonas\Dropbox\09_OTHER_PROJECTS\FnX\Wb\obj\Debug\Wb.pdb
