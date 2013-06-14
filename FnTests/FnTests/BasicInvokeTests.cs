@@ -7,6 +7,8 @@ namespace FnTests
     [TestClass]
     public class BasicInvokeTests
     {
+
+
         [TestMethod]
         public void Invoke_String()
         {
