@@ -7,6 +7,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnTests", "FnTests\FnTests\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fn", "Fn\Fn.csproj", "{60A2E52A-78FD-4E46-A9F7-3EC6EE700B23}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{6C66C476-CABE-49B2-A408-AAB7A94610A4}"
+	ProjectSection(SolutionItems) = preProject
+		CreateNuget.cmd = CreateNuget.cmd
+		Fn\bin\Release\Fnx.Fn.dll.nuspec = Fn\bin\Release\Fnx.Fn.dll.nuspec
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{AD7775B5-63D9-483E-9CE1-CA516DED993E}"
+	ProjectSection(SolutionItems) = preProject
+		Fn\bin\Release\FnX.Fn.dll = Fn\bin\Release\FnX.Fn.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,5 +39,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AD7775B5-63D9-483E-9CE1-CA516DED993E} = {6C66C476-CABE-49B2-A408-AAB7A94610A4}
 	EndGlobalSection
 EndGlobal

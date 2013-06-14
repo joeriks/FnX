@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FnX.Fn</id>
+    <version>0.1.0</version>
+    <authors>Jonas Eriksson</authors>
+    <owners>Jonas Eriksson</owners>
+    <projectUrl>https://github.com/joeriks/FnX</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Helpers for Func and Anonymous</description>
+    <copyright>Copyright 2013</copyright>
+  </metadata>
+</package>

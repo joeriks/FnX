@@ -55,6 +55,12 @@
     <Compile Include="BasicNewListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fn\Fn.csproj">
+      <Project>{60a2e52a-78fd-4e46-a9f7-3ec6ee700b23}</Project>
+      <Name>Fn</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
