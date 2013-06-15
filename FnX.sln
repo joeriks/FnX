@@ -1,21 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wb", "Wb\Wb.csproj", "{D8F62973-8C9F-4D67-830A-EB2776BDAA51}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnTests", "FnTests\FnTests\FnTests.csproj", "{C1864907-3876-439C-9BA9-08C9ED6B709A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fn", "Fn\Fn.csproj", "{60A2E52A-78FD-4E46-A9F7-3EC6EE700B23}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{6C66C476-CABE-49B2-A408-AAB7A94610A4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{636B184C-BE53-4840-A336-76B3C983AB3F}"
 	ProjectSection(SolutionItems) = preProject
-		CreateNuget.cmd = CreateNuget.cmd
-		Fn\bin\Release\Fnx.Fn.dll.nuspec = Fn\bin\Release\Fnx.Fn.dll.nuspec
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{AD7775B5-63D9-483E-9CE1-CA516DED993E}"
-	ProjectSection(SolutionItems) = preProject
-		Fn\bin\Release\FnX.Fn.dll = Fn\bin\Release\FnX.Fn.dll
+		Readme.md = Readme.md
 	EndProjectSection
 EndProject
 Global
@@ -24,10 +16,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D8F62973-8C9F-4D67-830A-EB2776BDAA51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8F62973-8C9F-4D67-830A-EB2776BDAA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8F62973-8C9F-4D67-830A-EB2776BDAA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8F62973-8C9F-4D67-830A-EB2776BDAA51}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C1864907-3876-439C-9BA9-08C9ED6B709A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C1864907-3876-439C-9BA9-08C9ED6B709A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1864907-3876-439C-9BA9-08C9ED6B709A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,8 +27,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{AD7775B5-63D9-483E-9CE1-CA516DED993E} = {6C66C476-CABE-49B2-A408-AAB7A94610A4}
 	EndGlobalSection
 EndGlobal

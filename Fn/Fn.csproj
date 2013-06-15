@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fn_InvokeCurry.cs" />
     <Compile Include="NewList.cs">
       <DependentUpon>NewList.tt</DependentUpon>
       <AutoGen>True</AutoGen>
