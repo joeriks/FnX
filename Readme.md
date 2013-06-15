@@ -59,6 +59,17 @@ Use the anonymous typecreator together with Linq Select:
 
 	var listOfPersons = Db.SomeQuery.Select(r=>newPerson(r.Name,r.Address));
 
+####Example 6:
+
+Some basic currying:
+
+	var function = Fn.Create((int a, int b) => a + b);
+    var reduced = function.CInvoke(1);
+
+    var result = reduced(1);
+    Assert.AreEqual(2,result);
+
+
 ####Notes
 
 The code behind the scenes looks simply like this:
