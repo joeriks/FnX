@@ -14,7 +14,7 @@ The strongly typed anonymous objects makes us get complete intellisense (for the
 
 ####Example 1:
 
-Use Fn.Create to create a Func that returns a list of anonymous objects:
+Use Fn.New to create a Func that returns a list of anonymous objects:
 
 	using FnX;
 	var queryByCategoryAndColor = Fn.New((string cateogory, string color)=>{
@@ -25,7 +25,7 @@ Use Fn.Create to create a Func that returns a list of anonymous objects:
 
 ####Example 2:
 
-Use Fn.Invoke to enclose code inside a Func and return an anonymous object:
+Use Fn.Get to enclose code inside a Func and return an anonymous object:
 
 	var request = Fn.Get(()=>{
 		var category = Request["category"];
@@ -36,7 +36,7 @@ Use Fn.Invoke to enclose code inside a Func and return an anonymous object:
 
 ####Example 3:
 
-Use Fn.Create to create an "anonymous typecreator":
+Use Fn.New to create an "anonymous typecreator":
 
 	var newPerson = Fn.New((string name, string address)=>new{name,address});
 	var p = newPerson("Foo","Bar");
@@ -61,7 +61,7 @@ Use the anonymous typecreator together with Linq Select:
 
 ####Example 6:
 
-C (supports up to 9 parameters, and reduced to any number below that):
+Curry with New extension method (supports up to 9 parameters, and reduced to any number below that):
 
 	var function = Fn.New((int a, int b) => a + b);
     var reduced = function.New(1);
@@ -74,14 +74,14 @@ C (supports up to 9 parameters, and reduced to any number below that):
 
 The code behind the scenes looks simply like this:
 
-	public static Func<TOut> Create<TOut>(Func<TOut> constructor)
+	public static Func<TOut> New<TOut>(Func<TOut> constructor)
 	{
 		return constructor;
 	}
 
 and 
 
-    public static TOut Invoke<TOut>(Func<TOut> func)
+    public static TOut Get<TOut>(Func<TOut> func)
     {
         return func();
     }
