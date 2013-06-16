@@ -1,4 +1,4 @@
-####Helpers to create type inferred funcs and auto-invoked funcs. Supports anonymous types. And also currying.
+####Helpers to create type inferred funcs and return object (of inferred type) from such funcs. Supports anonymous types. And also currying.
 
 ####Installation:
 
