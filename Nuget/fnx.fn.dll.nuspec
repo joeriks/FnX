@@ -2,12 +2,13 @@
 <package >
   <metadata>
     <id>FnX.Fn</id>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <authors>Jonas Eriksson</authors>
     <owners>Jonas Eriksson</owners>
     <projectUrl>https://github.com/joeriks/FnX</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Helpers for Func and Anonymous</description>
+    <description>Create Func's that returns anonymous (or any other type) on the fly with var myfun = Fn.New(()=>new{x=1}); Get anonymous (or any other type) from an enclosed code block with var myobj = Fn.Get(()=>{var x=1;return new {x};}); Reduce parameters with currying var myfun = Fn.New((string a, string b)=>..); var myfunA1 = myfun("A1"); See more samples in github repo.</description>
+    <summary>Helpers to create type inferred funcs and auto-invoked funcs, supports anonymous types. And also currying.</summary>
     <copyright>Copyright 2013</copyright>
   </metadata>
 </package>

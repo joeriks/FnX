@@ -1,12 +1,4 @@
-####FnX.Fn is a helper to make a little more use of anonymous objects. 
-
-The helper is a simple static class with functions that uses generics to make it possible to create anonymous object returning Funcs as well as invoked objects from such Funcs.
-
-While doing this we isolate code and create and pass around strongly typed anonymous objects in ways that are not otherwise possible. A nice detail is that anonymous objects are immutable.
-
-I found this suits script like coding very well, as WebPages Razor and ScriptCs.
-
-The strongly typed anonymous objects makes us get complete intellisense (for the objects as well as the lists) in Visual Studio. Unfortunately WebMatrix intellisense does not work with anonymous objects (version 3).
+####Helpers to create type inferred funcs and auto-invoked funcs. Supports anonymous types. And also currying.
 
 ####Installation:
 
@@ -14,7 +6,7 @@ The strongly typed anonymous objects makes us get complete intellisense (for the
 
 ####Example 1:
 
-Use Fn.New to create a Func that returns a list of anonymous objects:
+Use Fn.New to create a Func with type inferred from the actual lambda:
 
 	using FnX;
 	var queryByCategoryAndColor = Fn.New((string cateogory, string color)=>{
