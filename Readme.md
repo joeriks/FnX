@@ -17,7 +17,7 @@ The strongly typed anonymous objects makes us get complete intellisense (for the
 Use Fn.Create to create a Func that returns a list of anonymous objects:
 
 	using FnX;
-	var queryByCategoryAndColor = Fn.Create((string cateogory, string color)=>{
+	var queryByCategoryAndColor = Fn.New((string cateogory, string color)=>{
 		return SomeDb.ProductsQuery.Where(p=>p.Color==color && p.Category==category).Select(p=> new {p.Id, p.Name});
 	});
 
@@ -27,7 +27,7 @@ Use Fn.Create to create a Func that returns a list of anonymous objects:
 
 Use Fn.Invoke to enclose code inside a Func and return an anonymous object:
 
-	var request = Fn.Invoke(()=>{
+	var request = Fn.Get(()=>{
 		var category = Request["category"];
 		var color = Request["color"];
 		if (category=="" && color=="") throw new Exception("Not allowed");
@@ -38,14 +38,14 @@ Use Fn.Invoke to enclose code inside a Func and return an anonymous object:
 
 Use Fn.Create to create an "anonymous typecreator":
 
-	var newPerson = Fn.Create((string name, string address)=>new{name,address});
+	var newPerson = Fn.New((string name, string address)=>new{name,address});
 	var p = newPerson("Foo","Bar");
 
 ####Example 4:
 
 Use Fn.NewList together with a anonymous typecreator to create a list for anonymous objects of that type.
 
-	var newPerson = Fn.Create((string name, string address)=>new{name,address});
+	var newPerson = Fn.New((string name, string address)=>new{name,address});
     var list = Fn.NewList(newPerson);
     list.Add(newPerson("one", "two"));
     list.Add(newPerson("three", "four"));
@@ -61,10 +61,10 @@ Use the anonymous typecreator together with Linq Select:
 
 ####Example 6:
 
-Some basic currying:
+C (supports up to 9 parameters, and reduced to any number below that):
 
-	var function = Fn.Create((int a, int b) => a + b);
-    var reduced = function.CInvoke(1);
+	var function = Fn.New((int a, int b) => a + b);
+    var reduced = function.New(1);
 
     var result = reduced(1);
     Assert.AreEqual(2,result);

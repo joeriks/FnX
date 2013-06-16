@@ -5,40 +5,40 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FnTests
 {
     [TestClass]
-    public class BasicCreateTests
+    public class BasicNewTests
     {
         [TestMethod]
         public void Create_Return_String()
         {
-            var result = Fn.Create(() => "result");
+            var result = Fn.New(() => "result");
             Assert.IsTrue(result is Func<string>);
 
-            var invokedResult = result.Invoke();
+            var invokedResult = result();
             Assert.AreEqual("result", invokedResult);
         }
         [TestMethod]
         public void Create_One_Parameter_Return_String()
         {
-            var result = Fn.Create((string indata) => indata);
+            var result = Fn.New((string indata) => indata);
             Assert.IsTrue(result is Func<string, string>);
 
-            var invokedResult = result.Invoke("result");
+            var invokedResult = result("result");
             Assert.AreEqual("result", invokedResult);
         }
 
         [TestMethod]
         public void Create_Two_Parameters_Return_String()
         {
-            var result = Fn.Create((string indata1, string indata2) => indata1 + indata2);
+            var result = Fn.New((string indata1, string indata2) => indata1 + indata2);
             Assert.IsTrue(result is Func<string, string, string>);
 
-            var invokedResult = result.Invoke("re", "sult");
+            var invokedResult = result("re", "sult");
             Assert.AreEqual("result", invokedResult);
         }
         [TestMethod]
         public void Create_Three_Parameters_Return_String()
         {
-            var result = Fn.Create((string indata1, string indata2, string indata3) => indata1 + indata2 + indata3);
+            var result = Fn.New((string indata1, string indata2, string indata3) => indata1 + indata2 + indata3);
             Assert.IsTrue(result is Func<string, string, string, string>);
 
             var invokedResult = result.Invoke("re", "su", "lt");
@@ -47,7 +47,7 @@ namespace FnTests
         [TestMethod]
         public void Create_Four_Parameters_Return_String()
         {
-            var result = Fn.Create((string indata1, string indata2, string indata3, string indata4) => indata1 + indata2 + indata3 + indata4);
+            var result = Fn.New((string indata1, string indata2, string indata3, string indata4) => indata1 + indata2 + indata3 + indata4);
             Assert.IsTrue(result is Func<string, string, string, string, string>);
 
             var invokedResult = result.Invoke("re", "su", "l", "t");

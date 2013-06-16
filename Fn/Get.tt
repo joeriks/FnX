@@ -16,13 +16,7 @@ namespace FnX
     public static partial class Fn
     {
 
-        public static bool Invoke(Action func)
-        {
-            func();
-            return true;
-        }
-
-        public static TOut Invoke<TOut>(Func<TOut> func)
+        public static TOut Get<TOut>(Func<TOut> func)
         {
             return func();
         }
@@ -41,7 +35,7 @@ namespace FnX
 			var signature = String.Join(",",list.ToArray());
 		
 		#>
-public static TOut Invoke<<#= signature  #>>(Func<<#= signature  #>> func, <#= signatureIn #>)
+public static TOut Get<<#= signature  #>>(Func<<#= signature  #>> func, <#= signatureIn #>)
 		{
 			return Create(func)(<#= callIn #>);
 		}

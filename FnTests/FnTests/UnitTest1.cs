@@ -10,8 +10,8 @@ namespace FnTests
         [TestMethod]
         public void CurryTwoToOne()
         {
-            var function = Fn.Create((string a,string b)=>a+b);
-            var reduced = function.CInvoke("re");
+            var function = Fn.New((string a,string b)=>a+b);
+            var reduced = function.New("re");
 
             var result = reduced("sult");
             Assert.AreEqual("result",result);
@@ -20,8 +20,8 @@ namespace FnTests
         [TestMethod]
         public void CurryTwoToOneNumeric()
         {
-            var function = Fn.Create((int a, int b) => a + b);
-            var reduced = function.CInvoke(1);
+            var function = Fn.New((int a, int b) => a + b);
+            var reduced = function.New(1);
 
             var result = reduced(1);
             Assert.AreEqual(2,result);
@@ -30,8 +30,8 @@ namespace FnTests
         [TestMethod]
         public void CurryTwoToOneStringAndNumeric()
         {
-            var function = Fn.Create((string a, int b) => a + b);
-            var reduced = function.CInvoke("Number");
+            var function = Fn.New((string a, int b) => a + b);
+            var reduced = function.New("Number");
 
             var result = reduced(1);
             Assert.AreEqual("Number1", result);
@@ -40,18 +40,34 @@ namespace FnTests
         [TestMethod]
         public void CurryThreeToOneNumeric()
         {
-            var function = Fn.Create((int a, int b, int c) => a + b + c);
-            var reduced = function.CInvoke(1,2);
+            var function = Fn.New((int a, int b, int c) => a + b + c);
+            var reduced = function.New(1,2);
 
             var result = reduced(3);
             Assert.AreEqual(6, result);
 
         }
         [TestMethod]
+        public void CurryThreeToTwoToOneNumeric()
+        {
+            var function = Fn.New((int a, int b, int c) => a + b + c);
+            var result = function.New(1).New(2).Invoke(3);
+            Assert.AreEqual(6, result);
+
+        }
+        [TestMethod]
+        public void CurryNineToToOneNumeric()
+        {
+            var function = Fn.New((int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9) => a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8 + a9);
+            var result = function.New(1).New(1).New(1).New(1).New(1).New(1).New(1).New(1)(1);
+            Assert.AreEqual(9, result);
+
+        }
+        [TestMethod]
         public void CurryThreeToTwoNumeric()
         {
-            var function = Fn.Create((int a, int b, int c) => a + b + c);
-            var reduced = function.CInvoke(1);
+            var function = Fn.New((int a, int b, int c) => a + b + c);
+            var reduced = function.New(1);
 
             var result = reduced(1,1);
             Assert.AreEqual(3, result);
@@ -60,8 +76,8 @@ namespace FnTests
         [TestMethod]
         public void CurryTwoToResult()
         {
-            var function = Fn.Create((int a, int b) => a + b);
-            var result = function.CInvoke(1,1);
+            var function = Fn.New((int a, int b) => a + b);
+            var result = function.New(1)(1);
 
             Assert.AreEqual(2, 2);
 
