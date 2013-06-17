@@ -1,19 +1,27 @@
-####Helpers to create type inferred funcs and return object (of inferred type) from such funcs. Supports anonymous types. And also currying.
+####Helpers to easily create functions (func's) on the fly, as well as such which returns a value immediately. Especially well suited for functions that returns anonymous types.
+
+*Fn.New(func)* creates a new Func. With types inferred.
+
+*Fn.Get(func)* invokes a new Func immediately and returns its value.
+
+*(func).New(T param...)* creates a new Func based on an existing, with reduced parameters(s), also known as currying.
+
+*Fn.NewList(func)* creates an empty list of the out type of the Func.
 
 ####Installation:
 
 	Install-Package FnX.Fn
 
+	using FnX;
+
+
 ####Example 1:
 
 Use Fn.New to create a Func with type inferred from the actual lambda:
 
-	using FnX;
 	var queryByCategoryAndColor = Fn.New((string cateogory, string color)=>{
 		return SomeDb.ProductsQuery.Where(p=>p.Color==color && p.Category==category).Select(p=> new {p.Id, p.Name});
 	});
-
-(You cannot create a func that returns anonymoys types otherwise, as you need to explicitly define the type var f = new Func<?>)
 
 ####Example 2:
 
@@ -53,7 +61,7 @@ Use the anonymous typecreator together with Linq Select:
 
 ####Example 6:
 
-Curry with New extension method (supports up to 9 parameters, and reduced to any number below that):
+Reduce the number of parameters of an existing Func (Curry) with New extension method:
 
 	var function = Fn.New((int a, int b) => a + b);
     var reduced = function.New(1);
@@ -61,8 +69,20 @@ Curry with New extension method (supports up to 9 parameters, and reduced to any
     var result = reduced(1);
     Assert.AreEqual(2,result);
 
+####Example 7:
+
+Currying supports up to 9 parameters, reduced to any number below that:
+
+    var functionWithNineParameters = Fn.New((int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9) => a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8 + a9);
+    var reducedToFiveParameters = function.New(1, 1, 1, 1);
+    var result = reducedToFiveParameters(1, 1, 1, 1, 1);
+    Assert.AreEqual(9, result);
 
 ####Notes
+
+The New and Get is simply using generic factory pattern Func creators, which gives us type inferrence for our new Funcs.
+
+In C# we cannot use var f = new Func(()=>) without explicitly write the types as C# constructors cannot infer types http://stackoverflow.com/questions/3570167/why-cant-the-c-sharp-constructor-infer-type we need this factory pattern to make it nice and easy to create Func's without declaring the type explicitly. 
 
 The code behind the scenes looks simply like this:
 
@@ -80,3 +100,4 @@ and
 
 with overloads for 0-9 parameters.
 
+To save me from a lot of manual coding I'm using T4's to create all necessary overloads. So if anyone needs to support a lot more parameters it's easy to just change the T4 code to do so.
