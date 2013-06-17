@@ -23,7 +23,7 @@ namespace FnX
 			var signature = String.Join(",",list.ToArray());
 		
 		#>
-public static Func<<#= signature  #>> New<<#= signature  #>>(Func<<#= signature  #>> constructor)
+public static Func<<#= signature  #>> Create<<#= signature  #>>(Func<<#= signature  #>> constructor)
 		{
 			return constructor;
 		}

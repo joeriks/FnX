@@ -29,7 +29,7 @@ namespace FnX
 	var returnLambdaOut = Enumerable.Range(1,t.reduceFrom).Select (e => "t" + e).Aggregate ((a,s) => a+", " +s);
 		
 	#>
-	public static Func<<#=resultTypes #>> New<<#=funcTypes #>>(this Func<<#=funcTypes #>> func, <#=funcParameters #>)
+	public static Func<<#=resultTypes #>> Create<<#=funcTypes #>>(this Func<<#=funcTypes #>> func, <#=funcParameters #>)
         {
             return (<#=returnLambdaIn #>) => func(<#=returnLambdaOut #>);
         }

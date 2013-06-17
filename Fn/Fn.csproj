@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CurryNew.cs">
-      <DependentUpon>CurryNew.tt</DependentUpon>
+    <Compile Include="CurryCreate.cs">
+      <DependentUpon>CurryCreate.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -49,35 +49,35 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Get.cs">
-      <DependentUpon>Get.tt</DependentUpon>
+    <Compile Include="Invoke.cs">
+      <DependentUpon>Invoke.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="New.cs">
+    <Compile Include="Create.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>New.tt</DependentUpon>
+      <DependentUpon>Create.tt</DependentUpon>
     </Compile>
     <Compile Include="Fn_InvokeIf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CurryNew.tt">
+    <None Include="CurryCreate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CurryNew.cs</LastGenOutput>
+      <LastGenOutput>CurryCreate.cs</LastGenOutput>
     </None>
     <None Include="NewList.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NewList.cs</LastGenOutput>
     </None>
-    <None Include="Get.tt">
+    <None Include="Invoke.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Get.cs</LastGenOutput>
+      <LastGenOutput>Invoke.cs</LastGenOutput>
     </None>
-    <None Include="New.tt">
+    <None Include="Create.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>New.cs</LastGenOutput>
+      <LastGenOutput>Create.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

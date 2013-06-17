@@ -5,32 +5,32 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FnTests
 {
     [TestClass]
-    public class BasicGetTests
+    public class BasicInvokeTests
     {
 
 
         [TestMethod]
         public void Invoke_String()
         {
-            var invokedResult = Fn.Get(() => "result");
+            var invokedResult = Fn.Invoke(() => "result");
             Assert.AreEqual("result", invokedResult);
         }
         [TestMethod]
         public void Invoke_Simple_Calculation()
         {
-            var invokedResult = Fn.Get(() => 1 + 2);
+            var invokedResult = Fn.Invoke(() => 1 + 2);
             Assert.AreEqual(3, invokedResult);
         }
         [TestMethod]
         public void Invoke_Anonymous_Type()
         {
-            var invokedResult = Fn.Get(() => new { x = 1, y = 2 });
+            var invokedResult = Fn.Invoke(() => new { x = 1, y = 2 });
             Assert.AreEqual(new { x = 1, y = 2 }, invokedResult);
         }
         [TestMethod]
         public void Invoke_Calculated_Anonymous_Type()
         {
-            var invokedResult = Fn.Get(() =>
+            var invokedResult = Fn.Invoke(() =>
                 {
                     var x = 1;
                     var y = 2;
