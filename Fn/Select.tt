@@ -1,0 +1,45 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FnX
+{
+    public static partial class Fn
+    {
+        public static TOut Select<TOut>(Func<TOut> func)
+        {
+            return func();
+        }
+
+		<# foreach (var y in System.Linq.Enumerable.Range(1,9)) { 
+
+			var listIn = Enumerable.Range(0,y).Select(s => "T"+(s+1) + " t" + (s+1)).ToList();
+			var signatureIn = String.Join(",",listIn.ToArray());
+
+			var listCallIn = Enumerable.Range(0,y).Select(s => "t" + (s+1)).ToList();
+			var callIn = String.Join(", ",listCallIn.ToArray());
+		
+			var list = Enumerable.Range(0,y).Select(s => "T"+(s+1)).ToList();
+			list.Add("TOut");
+
+			var signature = String.Join(",",list.ToArray());
+		
+		#>
+public static TOut Select<<#= signature  #>>(Func<<#= signature  #>> func, <#= signatureIn #>)
+		{
+			return func(<#= callIn #>);
+		}
+
+		<# } #>
+
+    }
+}

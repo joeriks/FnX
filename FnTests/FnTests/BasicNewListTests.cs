@@ -10,7 +10,7 @@ namespace FnTests
         [TestMethod]
         public void Should_Create_List_Based_On_CreatedType()
         {
-            var type = Fn.Create((string name, string value) => new { name, value });
+            var type = Fn.Func((string name, string value) => new { name, value });
             var list = Fn.NewList(type);
             list.Add(type("one", "two"));
             list.Add(type("three", "four"));
@@ -26,7 +26,7 @@ namespace FnTests
         [TestMethod]
         public void Should_Be_Able_To_Filter_A_List()
         {
-            var type = Fn.Create((string name, string value) => new { name, value });
+            var type = Fn.Func((string name, string value) => new { name, value });
             var list = Fn.NewList(type);
             list.Add(type("one", "two"));
             list.Add(type("three", "four"));

@@ -50,8 +50,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BasicNewTests.cs" />
-    <Compile Include="BasicGetTests.cs" />
+    <Compile Include="SelectTests.cs" />
+    <Compile Include="BasicCreateTests.cs" />
+    <Compile Include="BasicInvokeTests.cs" />
     <Compile Include="BasicNewListTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BasicCurryTests.cs" />
