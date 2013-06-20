@@ -82,15 +82,15 @@ namespace FnTests
         public void MapWithDictionary()
         {
             var dict = new Dictionary<string, object> { { "Id", null }, { "Foo", "Bar" } };
-            var bar = dict.Select(() =>
-                {
-                    var dictMapper = Fn.Func((string name) => dict[name] ?? "");
-                    return new
-                    {
-                        Id = dictMapper("Id"),
-                        Foo = dictMapper("Foo")
-                    };
-                });
+    var bar = dict.Select(self =>
+        {
+            var dictMapper = Fn.Func((string name) => self[name] ?? "");
+            return new
+            {
+                Id = dictMapper("Id"),
+                Foo = dictMapper("Foo")
+            };
+        });
             Assert.AreEqual("",bar.Id);
             Assert.AreEqual("Bar", bar.Foo);
         }
