@@ -9,6 +9,31 @@ namespace FnTests
     public class BasicInvokeTests
     {
 
+        [TestMethod]
+        public void ActionTest()
+        {
+            var some = false;
+            {
+                some = true;
+            }
+            Assert.IsTrue(some);
+        }
+
+        [TestMethod]
+        public void CapsulateTest()
+        {
+            var some = false;
+
+            {
+                var invisible = 0;
+                some = true;
+            }
+
+            // cannot resolve symbol: invisible = 1;
+
+            Assert.IsTrue(some);
+        }
+
 
         [TestMethod]
         public void Invoke_String()
