@@ -67,7 +67,7 @@ Use Fn.Func to create a Func with type inferred from the actual lambda:
 
 ####Example 5:
 
-Use Fn.Select to enclose code inside a Func and return an anonymous object:
+Use Fn.Select to enclose code inside a Func and return an anonymous object (or any type):
 
 	var request = Fn.Select(()=>{
 		var category = Request["category"];
