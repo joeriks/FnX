@@ -19,7 +19,7 @@
 
 ####Example 1:
 
-Use (any object).Select to map any object to an anonymous object:
+Use ExtensionMethod Select: (any object).Select to map any object to an anonymous object:
 
     var fakeRequestObject = new Dictionary<string, object> { { "id", 12 }, { "foo", null } };
 
