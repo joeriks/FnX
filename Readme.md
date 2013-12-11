@@ -138,7 +138,7 @@ Currying supports up to 9 parameters, reduced to any number below that:
 
 ####Example 11:
 
-Recursion on Funcs: flatten node tree to a string
+Recursion on Funcs - using Y Combinator: flatten node tree to a string
 
     var rootNode = //some node hierarchy (see tests for example)
     var result = new StringBuilder();
@@ -147,6 +147,8 @@ Recursion on Funcs: flatten node tree to a string
             result.Append(param.Name); 
             foreach (var c in param.Children) recursiveAction(c); 
             })(rootNode);
+            
+Ref for the Y Combinator code : Wes Dyer http://blogs.msdn.com/b/wesdyer/archive/2007/02/02/anonymous-recursion-in-c.aspx            
 
 ####Notes
 
