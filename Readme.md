@@ -10,6 +10,8 @@
 
 *Fn.NewList(func)* creates an empty list of the out type of the Func.
 
+*Fn.Y(this => param => {something...; this(param);})* recursive call within a func
+
 ####Installation:
 
 	Install-Package FnX.Fn
