@@ -1,4 +1,4 @@
-####Helpers to easily map a single object ("Linq Select on object") or create functions (func's) on the fly. Especially well suited for functions that returns anonymous types. Encapsulates functionality.
+####Helpers to easily map a single object ("Linq Select on object") or create functions (func's) on the fly. Especially well suited for functions that returns anonymous types. Encapsulates functionality. Also can do currying and recursion.
 
 *(any object).Select(func map)* maps any object to a new object (just like Linq Select).
 
@@ -42,6 +42,11 @@ On the fly mapper:
 or
 
     var bar = foo.Select(self => new Bar { Id = self.Id, Name = self.Name });
+    
+    
+or use the mapper on a reqular LINQ Select on a list
+
+    var listOfBars = foos.Select(mapFooToBar);
 
 ####Example 3:
 
@@ -64,6 +69,16 @@ Use Fn.Func to create a Func with type inferred from the actual lambda:
 	var queryByCategoryAndColor = Fn.Func((string cateogory, string color)=>{
 		return SomeDb.ProductsQuery.Where(p=>p.Color==color && p.Category==category).Select(p=> new {p.Id, p.Name});
 	});
+	
+... which in this caase returns an anoymous type which you can not declare with a Func<...>
+
+But even if you use non-anonymous types you are helped by this method as you do not need to write
+
+	Func<string> some = ()=>"foo";
+	
+Instead, just write:
+
+	var some = Fn.Func(()=>"foo");
 
 ####Example 5:
 
@@ -88,9 +103,9 @@ Use Fn.Func to create an "anonymous typecreator":
 Use Fn.NewList together with a anonymous typecreator to create a list for anonymous objects of that type.
 
 	var newPerson = Fn.Func((string name, string address)=>new{name,address});
-    var list = Fn.NewList(newPerson);
-    list.Add(newPerson("one", "two"));
-    list.Add(newPerson("three", "four"));
+	var list = Fn.NewList(newPerson);
+	list.Add(newPerson("one", "two"));
+	list.Add(newPerson("three", "four"));
 
 The NewList returns an empty list with the anonymous object signature. Which is not possible otherwise as new List, just like new Func, needs the type argument to be specified.
 "Using the generic type 'System.Collections.Generic.List<T>' requires 1 type arguments"
