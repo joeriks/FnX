@@ -120,6 +120,19 @@ Currying supports up to 9 parameters, reduced to any number below that:
     var result = reducedToFiveParameters(1, 1, 1, 1, 1);
     Assert.AreEqual(9, result);
 
+
+####Example 11:
+
+Recursion on Funcs: flatten node tree to a string
+
+    var rootNode = //some node hierarchy (see tests for example)
+    var result = new StringBuilder();
+    Fn.Y<Node>(recursiveAction => 
+        param => { 
+            result.Append(param.Name); 
+            foreach (var c in param.Children) recursiveAction(c); 
+            })(rootNode);
+
 ####Notes
 
 The Func and Select is simply using generic factory pattern Func creators, which gives us type inferrence for our new Funcs.
