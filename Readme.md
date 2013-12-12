@@ -21,6 +21,34 @@
 
 ####Example 1:
 
+Specify intent and encapsulate functionality without spreading it cross separate ordinary functions:
+
+    bool SomeFunction(var incomingData:Foo) {
+    
+	    var customActionOnIncomingData = incomingData.Select((this)=> 
+	    {
+	    	... some functionality ...
+	    	return ...
+	    });
+	    
+	    var storeInDatabase = customActionOnIncomingData.Select((this)=>
+	    {
+	    	... some functionality ...
+	    	return ...;
+	    });
+	    
+	    var sendEmail = storeInDatabase.Select((this)=>
+	    {
+	    	... some functionality ...
+	    	return ...;
+	    });
+	    
+	    return sendEmail.Success;
+    }
+    
+
+####Example 2:
+
 Use ExtensionMethod Select: (any object).Select to map any object to an anonymous object:
 
     var fakeRequestObject = new Dictionary<string, object> { { "id", 12 }, { "foo", null } };
@@ -34,7 +62,7 @@ Use ExtensionMethod Select: (any object).Select to map any object to an anonymou
     Assert.AreEqual(12, request.id);
     Assert.AreEqual("", request.foo);
 
-####Example 2:
+####Example 3:
 
 On the fly mapper:
 
@@ -49,8 +77,6 @@ or
 or use the mapper on a reqular LINQ Select on a list
 
     var listOfBars = foos.Select(mapFooToBar);
-
-####Example 3:
 
 On the fly mapper with dictionary:
 
