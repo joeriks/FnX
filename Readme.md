@@ -22,6 +22,7 @@
 ####Example 1:
 
 Specify intent and encapsulate functionality without spreading it cross separate ordinary functions:
+Note that the encapsulated code here are only supposed to be two or three lines each, 
 
     bool SomeFunction(var incomingData:Foo) {
     
