@@ -1,4 +1,4 @@
-####Helpers to easily map a single object ("Linq Select on object") or create functions (func's) on the fly. Especially well suited for functions that returns anonymous types. Encapsulates functionality. Also can do currying and recursion.
+####Helpers around Func for encapsulation, creation with inferred types, currying and recursion. Makes it easier to create, use and pass around funcs in C#.
 
 *(any object).Select(func map)* maps any object to a new object (just like Linq Select).
 
