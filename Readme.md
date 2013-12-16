@@ -186,6 +186,34 @@ Recursion on Funcs - using Y Combinator: flatten node tree to a string
             
 Ref for the Y Combinator code : Wes Dyer http://blogs.msdn.com/b/wesdyer/archive/2007/02/02/anonymous-recursion-in-c.aspx            
 
+
+####Example 12:
+
+Continue to next if no hits.
+
+            public static IEnumerable<MyModel> Search(int id, string fromDate, string toDate, string search)
+            {
+
+                var selectById = Fn.Func(() => Querying.Fetch<MyModel>(
+                        "SELECT TOP 1 * FROM MyTable Where Id=@0",
+                        id));
+
+                var selectBetweenDates = Fn.Func(() => Querying.Fetch<MyModel>(
+                        "SELECT TOP 50 * FROM MyTable Where RegDate BETWEEN @0 AND @1",
+                        fromDate,
+                        toDate);
+
+                var selectFreeSearch = Fn.Func(() => Querying.Fetch<MyModel>(
+                        "SELECT TOP 50 * FROM MyTable Where Name Like @0",
+                        "%" + search ? "%"));
+
+                return selectById()
+                        .SelectIfEmpty(selectBetweenDates)
+                        .SelectIfEmpty(selectFreeSearch);
+
+            }
+
+
 ####Notes
 
 The Func and Select is simply using generic factory pattern Func creators, which gives us type inferrence for our new Funcs.
