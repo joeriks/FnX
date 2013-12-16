@@ -6,6 +6,14 @@
 
 *Fn.Select(func)* invokes a new Func immediately and returns any object - with the type, even if its anonymous.
 
+*(any object).SelectIf(condition, func)* invokes a func and returns its result - if the condition is true.
+
+*(any object).SelectIfNull(func)* invokes a func - if the object is null.
+
+*(any object).SelectIfEmpty(func)* invokes a func - if the enumerable is null or empty.
+
+*(any object).FuncFromAnonymous(func)* creates a new Func. With types inferred. Use a default object to figure out the type.
+
 *(func).Func(T param...)* creates a new Func based on an existing, with reduced parameters(s), also known as currying.
 
 *Fn.NewList(func)* creates an empty list of the out type of the Func.
@@ -26,19 +34,19 @@ Note that the encapsulated code here are only supposed to be two or three lines 
 
     bool SomeFunction(var incomingData:Foo) {
     
-	    var customActionOnIncomingData = incomingData.Select((this)=> 
+	    var customActionOnIncomingData = incomingData.Select(self=> 
 	    {
 	    	... some functionality ...
 	    	return ...
 	    });
 	    
-	    var storeInDatabase = customActionOnIncomingData.Select((this)=>
+	    var storeInDatabase = customActionOnIncomingData.Select(self=>
 	    {
 	    	... some functionality ...
 	    	return ...;
 	    });
 	    
-	    var sendEmail = storeInDatabase.Select((this)=>
+	    var sendEmail = storeInDatabase.Select(self=>
 	    {
 	    	... some functionality ...
 	    	return ...;
@@ -47,7 +55,6 @@ Note that the encapsulated code here are only supposed to be two or three lines 
 	    return sendEmail.Success;
     }
     
-
 ####Example 2:
 
 Use ExtensionMethod Select: (any object).Select to map any object to an anonymous object:
