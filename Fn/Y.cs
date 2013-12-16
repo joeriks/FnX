@@ -28,5 +28,13 @@ namespace FnX
             return rec(rec);
 
         }
+        public static Func<A, R> Y<A, R>(this R self, Func<Func<A, R>, Func<A, R>> f)
+        {
+
+            Recursive<A, R> rec = r => a => f(r(r))(a);
+
+            return rec(rec);
+
+        }
     }
 }

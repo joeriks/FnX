@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnTests", "FnTests\FnTests\FnTests.csproj", "{C1864907-3876-439C-9BA9-08C9ED6B709A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fn", "Fn\Fn.csproj", "{60A2E52A-78FD-4E46-A9F7-3EC6EE700B23}"
@@ -9,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Readme.md = Readme.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnX.Razor", "FnX.Razor\FnX.Razor.csproj", "{3A31545E-37BC-421B-8D9A-783996D7549C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnX.Razor.Tests", "FnX.Razor.Tests\FnX.Razor.Tests.csproj", "{CD0D27B4-07B1-46CC-9B52-A32677D95C23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +30,12 @@ Global
 		{60A2E52A-78FD-4E46-A9F7-3EC6EE700B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60A2E52A-78FD-4E46-A9F7-3EC6EE700B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60A2E52A-78FD-4E46-A9F7-3EC6EE700B23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A31545E-37BC-421B-8D9A-783996D7549C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A31545E-37BC-421B-8D9A-783996D7549C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A31545E-37BC-421B-8D9A-783996D7549C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD0D27B4-07B1-46CC-9B52-A32677D95C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD0D27B4-07B1-46CC-9B52-A32677D95C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD0D27B4-07B1-46CC-9B52-A32677D95C23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
