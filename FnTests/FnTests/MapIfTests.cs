@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FnTests
 {
     [TestClass]
-    public class SelectIfTests
+    public class MapIfTests
     {
         [TestMethod]
         public void SelectIfTestWithContinueProperty()
@@ -21,9 +21,9 @@ namespace FnTests
             var send = Fn.Func(() => true);
 
             var complete = indata
-                .Select(validate)
-                .SelectIf(update)
-                .SelectIf(send);
+                .Map(validate)
+                .MapIf(update)
+                .MapIf(send);
 
             Assert.IsFalse(complete);
 
@@ -50,39 +50,39 @@ namespace FnTests
 
             var isEmpty = Fn.Func((List<string> self) => !self.Any());
 
-            var result = Fn.Select(increaseTriesAndReturnEmpty) //1
-                        .SelectIf(isEmpty, increaseTriesAndReturnEmpty) //2
-                        .SelectIf(isEmpty, increaseTriesAndReturn("yes")) //3
-                        .SelectIf(isEmpty, increaseTriesAndReturn("no")) //4
-                        .SelectIf(isEmpty, increaseTriesAndReturn("no")); //5
+            var result = Fn.Map(increaseTriesAndReturnEmpty) //1
+                        .MapIf(isEmpty, increaseTriesAndReturnEmpty) //2
+                        .MapIf(isEmpty, increaseTriesAndReturn("yes")) //3
+                        .MapIf(isEmpty, increaseTriesAndReturn("no")) //4
+                        .MapIf(isEmpty, increaseTriesAndReturn("no")); //5
 
             Assert.AreEqual("yes", result[0]);
 
             var isNotNull = Fn.Func((List<string> self) => self == null || !self.Any());
 
-            var result2 = Fn.Select(increaseTriesAndReturnNull) // null 1
-            .SelectIf(isNotNull, increaseTriesAndReturnEmpty) //2
-            .SelectIf(isNotNull, increaseTriesAndReturn("yes")) //3
-            .SelectIf(isNotNull, increaseTriesAndReturn("no")) //4
-            .SelectIf(isNotNull, increaseTriesAndReturn("no")); //5
+            var result2 = Fn.Map(increaseTriesAndReturnNull) // null 1
+            .MapIf(isNotNull, increaseTriesAndReturnEmpty) //2
+            .MapIf(isNotNull, increaseTriesAndReturn("yes")) //3
+            .MapIf(isNotNull, increaseTriesAndReturn("no")) //4
+            .MapIf(isNotNull, increaseTriesAndReturn("no")); //5
 
             Assert.AreEqual("yes", result2[0]);
 
 
-            var result3 = Fn.Select(increaseTriesAndReturnNull) // null 1
-            .SelectIfEmpty(increaseTriesAndReturnNull) //2
-            .SelectIfEmpty(increaseTriesAndReturnEmpty) //3
-            .SelectIfEmpty(increaseTriesAndReturn("yes")) //4
-            .SelectIfEmpty(increaseTriesAndReturn("no")); //5
+            var result3 = Fn.Map(increaseTriesAndReturnNull) // null 1
+            .MapIfEmpty(increaseTriesAndReturnNull) //2
+            .MapIfEmpty(increaseTriesAndReturnEmpty) //3
+            .MapIfEmpty(increaseTriesAndReturn("yes")) //4
+            .MapIfEmpty(increaseTriesAndReturn("no")); //5
 
             Assert.AreEqual("yes", result3.ToArray()[0]);
 
 
-            var result4 = Fn.Select(increaseTriesAndReturnNull) // null 1
-            .SelectIfEmpty(increaseTriesAndReturnNull) //2
-            .SelectIfEmpty(increaseTriesAndReturnEmpty) //3
-            .SelectIfEmptyAnd(self => false, increaseTriesAndReturn("no")) //4
-            .SelectIfEmpty(increaseTriesAndReturn("yes")); //5
+            var result4 = Fn.Map(increaseTriesAndReturnNull) // null 1
+            .MapIfEmpty(increaseTriesAndReturnNull) //2
+            .MapIfEmpty(increaseTriesAndReturnEmpty) //3
+            .MapIfEmptyAnd(self => false, increaseTriesAndReturn("no")) //4
+            .MapIfEmpty(increaseTriesAndReturn("yes")); //5
 
             Assert.AreEqual("yes", result4.ToArray()[0]);
 
@@ -98,8 +98,8 @@ namespace FnTests
 
             var isFoo = Fn.FuncFromAnonymous(new { name = "" }, self => self.name == "Foo");
 
-            var result1 = foo.Select(isFoo);
-            var result2 = bar.Select(isFoo);
+            var result1 = foo.Map(isFoo);
+            var result2 = bar.Map(isFoo);
 
             Assert.IsTrue(result1);
             Assert.IsFalse(result2);
@@ -111,10 +111,10 @@ namespace FnTests
         {
             var indata = 1;
 
-            var x = Fn.Select(() => indata > 0)
-                .SelectIf(() => indata < 2)
-                .SelectIf(() => indata != 1)
-                .SelectIf(() => { throw new Exception("Will never execute"); });
+            var x = Fn.Map(() => indata > 0)
+                .MapIf(() => indata < 2)
+                .MapIf(() => indata != 1)
+                .MapIf(() => { throw new Exception("Will never execute"); });
 
             Assert.IsFalse(x);
 
@@ -140,9 +140,9 @@ namespace FnTests
 
             var condition = Fn.Func((int i) => (i < 2));
 
-            var x = indata.Select(self => self + 1)
-                .SelectIf(condition, self => self + 1)
-                .SelectIf(condition, self => self + 1);
+            var x = indata.Map(self => self + 1)
+                .MapIf(condition, self => self + 1)
+                .MapIf(condition, self => self + 1);
 
             Assert.AreEqual(2, x);
 

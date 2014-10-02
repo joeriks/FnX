@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SelectExtension.cs" />
+    <Compile Include="MapExtension.cs" />
     <Compile Include="CurryFunc.cs">
       <DependentUpon>CurryFunc.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -50,8 +50,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Select1.cs">
-      <DependentUpon>Select.tt</DependentUpon>
+    <Compile Include="Map.cs">
+      <DependentUpon>Map.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -73,9 +73,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NewList.cs</LastGenOutput>
     </None>
-    <None Include="Select.tt">
+    <None Include="Map.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Select1.cs</LastGenOutput>
+      <LastGenOutput>Map.cs</LastGenOutput>
     </None>
     <None Include="Func.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

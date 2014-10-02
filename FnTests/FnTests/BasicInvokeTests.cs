@@ -38,31 +38,31 @@ namespace FnTests
         [TestMethod]
         public void Invoke_String()
         {
-            var invokedResult = Fn.Select(() => "result");
+            var invokedResult = Fn.Map(() => "result");
             Assert.AreEqual("result", invokedResult);
         }
         [TestMethod]
         public void Invoke_Simple_Calculation()
         {
-            var invokedResult = Fn.Select(() => 1 + 2);
+            var invokedResult = Fn.Map(() => 1 + 2);
             Assert.AreEqual(3, invokedResult);
         }
         [TestMethod]
         public void Invoke_Anonymous_Type()
         {
-            var invokedResult = Fn.Select(() => new { x = 1, y = 2 });
+            var invokedResult = Fn.Map(() => new { x = 1, y = 2 });
             Assert.AreEqual(new { x = 1, y = 2 }, invokedResult);
         }
         [TestMethod]
         public void Invoke_Anonymous_Type_With_Attribute()
         {
-            var invokedResult = Fn.Select(() => new { x = 1, y = 2 });
+            var invokedResult = Fn.Map(() => new { x = 1, y = 2 });
             Assert.AreEqual(new { x = 1, y = 2 }, invokedResult);
         }
         [TestMethod]
         public void Invoke_Calculated_Anonymous_Type()
         {
-            var invokedResult = Fn.Select(() =>
+            var invokedResult = Fn.Map(() =>
                 {
                     var x = 1;
                     var y = 2;

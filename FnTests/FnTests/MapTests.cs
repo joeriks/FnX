@@ -6,13 +6,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FnTests
 {
     [TestClass]
-    public class SelectTests
+    public class MapTests
     {
         [TestMethod]
         public void ReturnWhatever()
         {
             var x = new DateTime(2012, 1, 1);
-            var y = x.Select(self => new { self.Day });
+            var y = x.Map(self => new { self.Day });
             Assert.AreEqual(1, y.Day);
         }
         [TestMethod]
@@ -24,10 +24,10 @@ namespace FnTests
             var x = new Foo { Id = 123, Name = "Bar" };
             var y = new Foo { Id = 123, Name = "Somethingelse" };
 
-            var attrib = x.Select(attribSelector);
+            var attrib = x.Map(attribSelector);
             Assert.AreEqual(attrib, "selected='selected'");
 
-            var attriby = y.Select(attribSelector);
+            var attriby = y.Map(attribSelector);
             Assert.AreEqual(attriby, "");
 
 
@@ -37,7 +37,7 @@ namespace FnTests
         {
             var Request = new Dictionary<string, object> { { "id", 1 }, { "foo", "bar" } };
 
-            var request = Request.Select(self => new
+            var request = Request.Map(self => new
                 {
                     id = self["id"] ?? 0,
                     foo = self["foo"] ?? ""
@@ -52,7 +52,7 @@ namespace FnTests
         {
             var Request = new Dictionary<string, object> { { "id", 12 }, { "foo", null } };
 
-            var request = Request.Select(self => new
+            var request = Request.Map(self => new
             {
                 id = self["id"] ?? 0,
                 foo = self["foo"] ?? ""
@@ -66,7 +66,7 @@ namespace FnTests
         public void MapToSomething()
         {
             var x = new Foo { Id = 123, Name = "Bar" };
-            var y = x.Select(self => new Bar { Id = self.Id, Name = self.Name });
+            var y = x.Map(self => new Bar { Id = self.Id, Name = self.Name });
             Assert.AreEqual("Bar", y.Name);
         }
         [TestMethod]
@@ -74,7 +74,7 @@ namespace FnTests
         {
             var foo = new Foo { Id = 123, Name = "Bar" };
             var mapFooToBar = Fn.Func((Foo self) => new Bar { Id = self.Id, Name = self.Name });
-            var bar = foo.Select(mapFooToBar);
+            var bar = foo.Map(mapFooToBar);
             Assert.AreEqual("Bar", bar.Name);
         }
 
@@ -82,7 +82,7 @@ namespace FnTests
         public void MapWithDictionary()
         {
             var dict = new Dictionary<string, object> { { "Id", null }, { "Foo", "Bar" } };
-    var bar = dict.Select(self =>
+    var bar = dict.Map(self =>
         {
             var dictMapper = Fn.Func((string name) => self[name] ?? "");
             return new
@@ -100,13 +100,13 @@ namespace FnTests
         public void MapToAnonymous()
         {
             var x = new Foo { Id = 123, Name = "Bar" };
-            var y = x.Select(self => new { self.Name, self.Id });
+            var y = x.Map(self => new { self.Name, self.Id });
             Assert.AreEqual("Bar", y.Name);
         }
         [TestMethod]
         public void NoSelf()
         {
-            var y = this.Select(() => new { x = 1, y = 2 });
+            var y = this.Map(() => new { x = 1, y = 2 });
             Assert.AreEqual(1, y.x);
         }
     }

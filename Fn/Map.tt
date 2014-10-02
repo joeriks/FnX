@@ -15,7 +15,7 @@ namespace FnX
 {
     public static partial class Fn
     {
-        public static TOut Select<TOut>(Func<TOut> func)
+        public static TOut Map<TOut>(Func<TOut> func)
         {
             return func();
         }
@@ -34,7 +34,7 @@ namespace FnX
 			var signature = String.Join(",",list.ToArray());
 		
 		#>
-public static TOut Select<<#= signature  #>>(Func<<#= signature  #>> func, <#= signatureIn #>)
+public static TOut Map<<#= signature  #>>(Func<<#= signature  #>> func, <#= signatureIn #>)
 		{
 			return func(<#= callIn #>);
 		}
