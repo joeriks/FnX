@@ -82,16 +82,16 @@ namespace FnTests
         public void MapWithDictionary()
         {
             var dict = new Dictionary<string, object> { { "Id", null }, { "Foo", "Bar" } };
-    var bar = dict.Map(self =>
-        {
-            var dictMapper = Fn.Func((string name) => self[name] ?? "");
-            return new
-            {
-                Id = dictMapper("Id"),
-                Foo = dictMapper("Foo")
-            };
-        });
-            Assert.AreEqual("",bar.Id);
+            var bar = dict.Map(self =>
+                {
+                    var dictMapper = Fn.Func((string name) => self[name] ?? "");
+                    return new
+                    {
+                        Id = dictMapper("Id"),
+                        Foo = dictMapper("Foo")
+                    };
+                });
+            Assert.AreEqual("", bar.Id);
             Assert.AreEqual("Bar", bar.Foo);
         }
 
@@ -108,6 +108,17 @@ namespace FnTests
         {
             var y = this.Map(() => new { x = 1, y = 2 });
             Assert.AreEqual(1, y.x);
+        }
+
+        [TestMethod]
+        public void MapMapMap()
+        {
+            var a = new { x = 5, y = 10 }
+                .Map(_ => new { z = _.x * _.y })
+                .Map(_ => new { q = _.z / 2 })
+                .Map(_ => _.q);
+
+            Assert.AreEqual(25, a);
         }
     }
 
