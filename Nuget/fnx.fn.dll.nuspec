@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>FnX.Fn</id>
-    <version>0.5.0</version>
+    <version>0.8.1-prerelease</version>
     <authors>Jonas Eriksson</authors>
     <owners>Jonas Eriksson</owners>
     <projectUrl>https://github.com/joeriks/FnX</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Small helpers lib to easily map a single object ("Linq Select on object") or create functions (func's) on the fly. Especially well suited for functions that returns anonymous types. More info, samples and tests in github repo.</description>
     <summary>Small helpers lib to easily map a single object and create funcs, good with anonymous types. And also currying.</summary>
-    <copyright>Copyright 2013</copyright>
+    <copyright>Copyright 2015</copyright>
   </metadata>
 </package>
