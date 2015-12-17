@@ -8,6 +8,10 @@ namespace FnX
 {
     public static partial class Fn
     {
+        public static void Action<TIn>(this TIn self, Action<TIn> action)
+        {
+            action(self);
+        }
         public static TOut Map<TIn, TOut>(this TIn self, Func<TIn, TOut> func)
         {
             return func(self);
