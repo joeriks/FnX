@@ -4,13 +4,15 @@
 
 *Fn.Func(func)* creates a new Func. With types inferred.
 
-*Fn.Select(func)* invokes a new Func immediately and returns any object - with the type, even if its anonymous.
+*Fn.Map(func)* invokes a new Func immediately and returns any object - with the type, even if its anonymous.
 
-*(any object).SelectIf(condition, func)* invokes a func and returns its result - if the condition is true.
+*(any object).MapIf(condition, func)* invokes a func and returns its result - if the condition is true.
 
-*(any object).SelectIfNull(func)* invokes a func - if the object is null.
+*(any object).MapIfNull(func)* invokes a func - if the object is null.
 
-*(any object).SelectIfEmpty(func)* invokes a func - if the enumerable is null or empty.
+*(any object).MapIfEmpty(func)* invokes a func - if the enumerable is null or empty.
+
+*(any object).Action(action) invokes an action on the object.
 
 *(any object).FuncFromAnonymous(func)* creates a new Func. With types inferred. Use a default object to figure out the type.
 
@@ -27,26 +29,26 @@
 	using FnX;
 
 
-####Example 1:
+####Example Map (or Select):
 
 Specify intent and encapsulate functionality without spreading it cross separate ordinary functions:
 Note that the encapsulated code here are only supposed to be two or three lines each, 
 
     bool SomeFunction(var incomingData:Foo) {
     
-	    var customActionOnIncomingData = incomingData.Select(self=> 
+	    var customActionOnIncomingData = incomingData.Map(self=> 
 	    {
 	    	... some functionality ...
 	    	return ...
 	    });
 	    
-	    var storeInDatabase = customActionOnIncomingData.Select(self=>
+	    var storeInDatabase = customActionOnIncomingData.Map(self=>
 	    {
 	    	... some functionality ...
 	    	return ...;
 	    });
 	    
-	    var sendEmail = storeInDatabase.Select(self=>
+	    var sendEmail = storeInDatabase.Map(self=>
 	    {
 	    	... some functionality ...
 	    	return ...;
@@ -55,13 +57,13 @@ Note that the encapsulated code here are only supposed to be two or three lines 
 	    return sendEmail.Success;
     }
     
-####Example 2:
+####Example Map (or Select):
 
-Use ExtensionMethod Select: (any object).Select to map any object to an anonymous object:
+Use ExtensionMethod Map: (any object).Map to map any object to an anonymous object:
 
     var fakeRequestObject = new Dictionary<string, object> { { "id", 12 }, { "foo", null } };
 
-    var request = fakeRequestObject.Select(self => new
+    var request = fakeRequestObject.Map(self => new
     {
         id = self["id"] ?? 0,
         foo = self["foo"] ?? ""
@@ -70,25 +72,39 @@ Use ExtensionMethod Select: (any object).Select to map any object to an anonymou
     Assert.AreEqual(12, request.id);
     Assert.AreEqual("", request.foo);
 
-####Example 3:
+###Example Action
+
+Use Extensionmethod Action: (any object).Action to perform action on any object:
+
+	Table.AddRow().Action(row=>{
+		row.AddCell().Action(cell=>{
+			cell.Text = "Sample";
+			cell.Font.Bold = true;
+		});
+		row.AddCell().Action(cell=>{
+			cell.Text = "Lorem ipsum";
+		});
+	})
+
+####Example On the fly mapper
 
 On the fly mapper:
 
     var mapFooToBar = Fn.Func((Foo self) => new Bar { Id = self.Id, Name = self.Name });
-    var bar = foo.Select(mapFooToBar);
+    var bar = foo.Map(mapFooToBar);
 
 or
 
-    var bar = foo.Select(self => new Bar { Id = self.Id, Name = self.Name });
+    var bar = foo.Map(self => new Bar { Id = self.Id, Name = self.Name });
     
     
 or use the mapper on a reqular LINQ Select on a list
 
-    var listOfBars = foos.Select(mapFooToBar);
+    var listOfBars = foos.Map(mapFooToBar);
 
 On the fly mapper with dictionary:
 
-    var bar = dict.Select(self =>
+    var bar = dict.Map(self =>
         {
             var dictMapper = Fn.Func((string name) => self[name] ?? "");
             return new
@@ -98,7 +114,7 @@ On the fly mapper with dictionary:
             };
         });
 
-####Example 4:
+####Example Fn.Func
 
 Use Fn.Func to create a Func with type inferred from the actual lambda:
 
@@ -116,25 +132,25 @@ Instead, just write:
 
 	var some = Fn.Func(()=>"foo");
 
-####Example 5:
+####Example Fn.Select
 
-Use Fn.Select to enclose code inside a Func and return an anonymous object (or any type):
+Use Fn.Map to enclose code inside a Func and return an anonymous object (or any type):
 
-	var request = Fn.Select(()=>{
+	var request = Fn.Map(()=>{
 		var category = Request["category"];
 		var color = Request["color"];
 		if (category=="" && color=="") throw new Exception("Not allowed");
 		return new {category, color};
 	});
 
-####Example 6:
+####Example Anonymous typecreator
 
 Use Fn.Func to create an "anonymous typecreator":
 
 	var newPerson = Fn.Func((string name, string address)=>new{name,address});
 	var p = newPerson("Foo","Bar");
 
-####Example 7:
+####Example Create list with anonymous type
 
 Use Fn.NewList together with a anonymous typecreator to create a list for anonymous objects of that type.
 
@@ -146,13 +162,13 @@ Use Fn.NewList together with a anonymous typecreator to create a list for anonym
 The NewList returns an empty list with the anonymous object signature. Which is not possible otherwise as new List, just like new Func, needs the type argument to be specified.
 "Using the generic type 'System.Collections.Generic.List<T>' requires 1 type arguments"
 
-####Example 8:
+####Example 
 
 Use the anonymous typecreator together with Linq Select:
 
 	var listOfPersons = Db.SomeQuery.Select(r=>newPerson(r.Name,r.Address));
 
-####Example 9:
+####Example Currying 1
 
 Reduce the number of parameters of an existing Func ("currying") with Func extension method:
 
@@ -162,7 +178,7 @@ Reduce the number of parameters of an existing Func ("currying") with Func exten
     var result = reduced(1);
     Assert.AreEqual(2,result);
 
-####Example 10:
+####Example Currying 2
 
 Currying supports up to 9 parameters, reduced to any number below that:
 
@@ -172,7 +188,7 @@ Currying supports up to 9 parameters, reduced to any number below that:
     Assert.AreEqual(9, result);
 
 
-####Example 11:
+####Example Recursion of funcs 
 
 Recursion on Funcs - using Y Combinator: flatten node tree to a string
 
@@ -216,7 +232,7 @@ Continue to next if no hits.
 
 ####Notes
 
-The Func and Select is simply using generic factory pattern Func creators, which gives us type inferrence for our new Funcs.
+The Func and Map is simply using generic factory pattern Func creators, which gives us type inferrence for our new Funcs.
 
 In C# we cannot use var f = new Func(()=>) without explicitly write the types as C# constructors cannot infer types http://stackoverflow.com/questions/3570167/why-cant-the-c-sharp-constructor-infer-type we need this factory pattern to make it nice and easy to create Func's without declaring the type explicitly. 
 
