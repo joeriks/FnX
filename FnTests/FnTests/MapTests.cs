@@ -16,6 +16,13 @@ namespace FnTests
             Assert.AreEqual(1, y.Day);
         }
         [TestMethod]
+        public void ReturnWhateverSelect()
+        {
+            var x = new DateTime(2012, 1, 1);
+            var y = x.Select(self => new { self.Day });
+            Assert.AreEqual(1, y.Day);
+        }
+        [TestMethod]
         public void AttribSelector()
         {
             var currentName = "Bar";

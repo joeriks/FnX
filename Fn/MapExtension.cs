@@ -20,6 +20,30 @@ namespace FnX
         {
             return func();
         }
+        /// <summary>
+        /// Or use Map instead
+        /// </summary>
+        /// <typeparam name="TIn"></typeparam>
+        /// <typeparam name="TOut"></typeparam>
+        /// <param name="self"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public static TOut Select<TIn, TOut>(this TIn self, Func<TIn, TOut> func)
+        {
+            return func(self);
+        }
+        /// <summary>
+        /// Or use Map instead
+        /// </summary>
+        /// <typeparam name="TIn"></typeparam>
+        /// <typeparam name="TOut"></typeparam>
+        /// <param name="self"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public static TOut Select<TIn, TOut>(this TIn self, Func<TOut> func)
+        {
+            return func();
+        }
         public static Func<TOut> Func<TIn, TOut>(this TIn self, Func<TIn, TOut> func)
         {
             return () => func(self);
