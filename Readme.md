@@ -1,5 +1,6 @@
 ####Helpers around Func for encapsulation, creation with inferred types, currying and recursion. Makes it easier to create, use and pass around funcs in C#.
 
+*(any object).Map(func map)* maps any object to a new object (just like Linq Select).
 *(any object).Select(func map)* maps any object to a new object (just like Linq Select).
 
 *Fn.Func(func)* creates a new Func. With types inferred.
@@ -224,8 +225,8 @@ Continue to next if no hits.
                         "%" + search ? "%"));
 
                 return selectById()
-                        .SelectIfEmpty(selectBetweenDates)
-                        .SelectIfEmpty(selectFreeSearch);
+                        .MapIfEmpty(selectBetweenDates)
+                        .MapIfEmpty(selectFreeSearch);
 
             }
 
